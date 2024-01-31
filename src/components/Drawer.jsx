@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ImageBackground } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image, ImageBackground, Pressable } from 'react-native'
 
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 // import Home from "../screens/Home";
@@ -35,11 +35,26 @@ const Drawer = ({ navigation }) => {
                             <Text style={styles.nameText}>Md.Hemal</Text>
                             <Text style={styles.userName}>@mdhemal2024</Text>
                         </View>
+                        <View style={styles.proBtns}>
+                            <Pressable style={[styles.center, styles.editBtn]} onPress={()=>console.log('edite pro')}>
+                                <Text style={styles.editTxt}>Edit Profile</Text>
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
                 <View style={styles.moreDetails}>
-                    <Text style={styles.moreText}>Followers: 105</Text>
-                    <Text style={styles.moreText}>Following: 105</Text>
+                    <View style={[styles.center, styles.follow]}>
+                        <Text style={styles.numTxt}>11</Text>
+                        <Text style={styles.moreText}>posts</Text>
+                    </View>
+                    <View style={[styles.center, styles.follow]}>
+                        <Text style={styles.numTxt}>105</Text>
+                        <Text style={styles.moreText}>followers</Text>
+                    </View>
+                    <View style={[styles.center, styles.follow]}>
+                        <Text style={styles.numTxt}>105</Text>
+                        <Text style={styles.moreText}>following</Text>
+                    </View>
                 </View>
             </View>
             <View style={[styles.navBtns]}>
@@ -53,7 +68,7 @@ const Drawer = ({ navigation }) => {
                 }
             </View>
             <View style={[styles.center, styles.drawerFooter]}>
-                <TouchableOpacity style={[styles.center, styles.logoutBtn]} onPress={()=>{console.log('log out')}}>
+                <TouchableOpacity style={[styles.center, styles.logoutBtn]} onPress={() => { console.log('log out') }}>
                     <View style={styles.logIcon}>{lock}</View>
                     <Text style={styles.logtext}>Logout</Text>
                 </TouchableOpacity>
@@ -82,36 +97,65 @@ const styles = StyleSheet.create({
         elevation: 3
     },
     proHead: {
-        // flex: 0.7,
+        flex: 0.7,
         flexDirection: 'row',
         width: "100%",
     },
     moreDetails: {
-        // flex: 0.3,
-        paddingTop: 20,
-        paddingLeft: 20,
+        flex: 0.3,
+        flexDirection: 'row',
+        paddingBottom: 5,
         width: "100%",
         // backgroundColor: 'red'
     },
-    moreText: {
-        color: 'white',
-        fontSize: 18
-    },
-    profilePic:{
+    profilePic: {
         width: "40%"
     },
     proDetails: {
         width: "60%",
         // backgroundColor: 'red'
-    }, 
+    },
+    nameSec: {  
+        flex: 0.5,
+        justifyContent: 'center',
+        // backgroundColor: 'blue'
+    },
+    proBtns: {
+        flex: 0.3,
+        justifyContent: 'center',
+        // backgroundColor:'red'
+    },
+    editBtn: {  
+        height: 40,
+        width: "65%",
+        backgroundColor: 'grey',
+        borderRadius: 5,
+        elevation: 3
+    },  
+    editTxt: {
+        color: 'white',
+        fontSize: 18,
+    },
     nameText: {
-        fontSize: 23,
+        fontSize: 22,
         color: "white",
         fontWeight: "bold"
-    }, 
+    },
     userName: {
-        fontSize: 18,
+        fontSize: 16,
         color: 'white'
+    },
+    follow: {
+        width: "33%"
+    },
+    numTxt: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    moreText: {
+        color: 'white',
+        fontSize: 16
     },
     profImg: {
         height: 90,
